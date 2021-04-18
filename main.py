@@ -10,7 +10,7 @@ import urllib.request
 import time
 
 html_temp = '''
-    <div style = "background-color: rgba(25,25,112,0.06); padding-bottom: 20px; padding-top: 20px; padding-left: 5px; padding-right: 5px">
+    <div style = "background-color: rgba(25,25,112,0.03); padding-bottom: 20px; padding-top: 20px; padding-left: 5px; padding-right: 5px">
     <center><h1>Handwritten Digit Recognition</h1></center>
     
     </div>
@@ -56,7 +56,7 @@ try:
   if image is not None:
     st.image(image, width = 300, caption = 'Uploaded Image')
     if st.button('Predict'):
-        model = keras.models.load_model('/home/srijarko/Github/Handwritten-text-recognition/model/model.h5')
+        model = keras.models.load_model('model/model.h5')
         image = np.array(image.resize((28, 28), Image.ANTIALIAS))
         image = np.array(image, dtype='uint8' )
         image = image[:,:,0]
