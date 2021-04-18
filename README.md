@@ -13,4 +13,20 @@ These are the basic steps:
 9) Model will predict on test data
 10) Display the output (in grayscale)
 
+## Guidelines for Usage
 
+- Cloning the Repository: 
+
+        git clone https://github.com/devanshpratapsingh/Handwritten-text-recognition
+        
+- Setting up the Python Environment with the dependencies:
+
+        pip install -r requirements.txt
+
+- Running the Web App:
+
+        streamlit run main.py
+        
+- Stopping the web app from the terminal:
+
+        Ctrl+C
