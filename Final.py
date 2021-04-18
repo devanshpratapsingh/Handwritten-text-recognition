@@ -3,6 +3,7 @@ import cv2 as cv
 import numpy as np
 import matplotlib.pyplot as plt
 import tensorflow as tf
+from PIL import Image
 
 #importing the dataset form mnist
 mnist=tf.keras.datasets.mnist
@@ -28,13 +29,16 @@ loss, accuracy= model.evaluate(x_test, y_test)
 print(accuracy)
 print(loss)
 
-model.save('digits.model')
+model.save('model.h5')
 
-
+''' Testing with different inputs '''
 for x in range(1,6):
-    img = cv.imread(f'{x}.jpeg')[:,:,0]
-    img = np.invert(np.array([img]))
-    prediction = model.predict(img)
+    image = Image.open(str(x)+'.jpeg')
+    image = np.array(image.resize((28, 28), Image.ANTIALIAS))
+    image = np.array(image, dtype='uint8' )
+    image = image[:,:,0]
+    image = np.invert(np.array([image]))
+    prediction = model.predict(image)
     print(f'Probably the result is: {np.argmax(prediction)}')
-    plt.imshow(img[0], cmap=plt.cm.binary)
+    plt.imshow(image[0], cmap=plt.cm.binary)
     plt.show()
